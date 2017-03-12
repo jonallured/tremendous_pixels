@@ -5,7 +5,7 @@ class ReadTimelineJob < ApplicationJob
     client = TwitterClient.generate
     timeline_args = {
       trim_user: true,
-      # since_id: FewerOnion::Tweet.newest_id,
+      since_id: TargetTweet.newest_id,
       include_rts: false,
       exclude_replies: false
     }
