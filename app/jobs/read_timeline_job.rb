@@ -12,7 +12,10 @@ class ReadTimelineJob < ApplicationJob
     tweets = client.user_timeline(ENV['TARGET_TWITTER'], timeline_args)
 
     for tweet in tweets
-      puts tweet.full_text
+      twitter_id = tweet.id
+      unless TargetTweet.exists?(twitter_id: twitter_id)
+        TargetTweet.create twitter_id: tweet.id, full_text: tweet.full_text
+      end
     end
 
     self.class.set(wait: READ_DELAY).perform_later
