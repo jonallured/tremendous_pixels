@@ -10,6 +10,7 @@ gem 'coffee-rails'
 gem 'jbuilder'
 gem 'jquery-rails'
 gem 'sass-rails'
+gem 'sidekiq'
 gem 'twitter'
 gem 'uglifier'
 
