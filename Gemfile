@@ -10,6 +10,7 @@ gem 'coffee-rails'
 gem 'jbuilder'
 gem 'jquery-rails'
 gem 'sass-rails'
+gem 'twitter'
 gem 'uglifier'
 
 group :development, :test do
