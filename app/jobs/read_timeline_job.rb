@@ -1,4 +1,6 @@
 class ReadTimelineJob < ApplicationJob
+  READ_DELAY = ENV['READ_DELAY'].to_i.seconds
+
   def perform
     client = TwitterClient.generate
     timeline_args = {
@@ -12,5 +14,7 @@ class ReadTimelineJob < ApplicationJob
     for tweet in tweets
       puts tweet.full_text
     end
+
+    self.class.set(wait: READ_DELAY).perform_later
   end
 end
