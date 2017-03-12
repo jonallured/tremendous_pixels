@@ -14,6 +14,7 @@ gem 'uglifier'
 
 group :development, :test do
   gem 'rails-pry'
+  gem 'dotenv-rails'
 end
 
 group :development do
