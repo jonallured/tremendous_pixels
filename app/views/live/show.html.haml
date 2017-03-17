@@ -1,0 +1,7 @@
+:coffee
+  App.cable.subscriptions.create 'LiveChannel',
+    received: (data) ->
+      $('img').attr('src', data.image_src)
+
+%h1 Live
+%img{src: image.to_src}
