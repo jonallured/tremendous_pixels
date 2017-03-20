@@ -101,6 +101,56 @@ class TriadicColors < ColorSet
   end
 end
 
+class ComplementaryTriadicColors
+  def self.compute_for(hue, saturation, lightness)
+    new(hue, saturation, lightness).compute
+  end
+
+  def initialize(hue, saturation, lightness)
+    @hue = hue
+    @saturation = saturation
+    @lightness = lightness
+  end
+
+  def compute
+    [
+      lower_triadic_hue,
+      lower_triadic_complementary_hue,
+      @hue,
+      higher_triadic_hue,
+      higher_triadic_complementary_hue,
+    ].map do |hu|
+      # ChunkyPNG::Color.from_hsl(hu, @saturation, @lightness)
+      ChunkyPNG::Color.from_hsl(hu, 1.0, 0.5)
+    end
+  end
+
+  private
+
+  def lower_triadic_hue
+    adjust_hue_by(@hue, -120)
+  end
+
+  def lower_triadic_complementary_hue
+    adjust_hue_by(lower_triadic_hue, +180)
+  end
+
+  def higher_triadic_hue
+    adjust_hue_by(@hue, +120)
+  end
+
+  def higher_triadic_complementary_hue
+    adjust_hue_by(higher_triadic_hue, +180)
+  end
+
+  def adjust_hue_by(hue, degrees)
+    ending_hue = hue + degrees
+    ending_hue = ending_hue + 360 if ending_hue < 0
+    ending_hue = ending_hue - 360 if ending_hue > 360
+    ending_hue
+  end
+end
+
 class TweetTransformer
   def self.transform(target_tweet)
     new(target_tweet).transform
@@ -139,9 +189,7 @@ class TweetTransformer
     lightness = (SecureRandom.rand(20) + 41) / 100.0
 
     color_sets = [
-      AnalogousColors,
-      ComplementaryColors,
-      TriadicColors
+      ComplementaryTriadicColors
     ]
 
     color_set = color_sets[SecureRandom.rand(color_sets.count)]
