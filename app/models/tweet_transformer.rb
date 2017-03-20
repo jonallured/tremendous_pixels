@@ -169,7 +169,7 @@ class TweetTransformer
     lol = colors
     data = image_data(omg, lol)
     # save the Image model
-    @target_tweet.create_image data: data, text: omg, palette: lol
+    @target_tweet.create_image data: data, text: omg.flatten.join, palette: lol
   end
 
   private
