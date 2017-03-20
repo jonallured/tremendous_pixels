@@ -1,6 +1,7 @@
 !/log/.keep
 !/tmp/.keep
 .env
+.sass-cache
 /.bundle
 /log/*
 /tmp/*
