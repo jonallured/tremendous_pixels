@@ -1,0 +1,12 @@
+!!!
+%html
+  %head
+    %title Tremendous Pixels
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+    %meta(name="viewport" content="width=device-width")
+    %meta(name="viewport" content="initial-scale=1,user-scalable=no")
+    %meta(name="apple-mobile-web-app-capable" content="yes")
+    %meta(name="apple-mobile-web-app-status-bar-style" content="black-translucent")
+  %body= yield
