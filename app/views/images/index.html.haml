@@ -6,4 +6,4 @@
     width: 192px
 
 - for image in images
-  %img{src: image.to_src}
+  = link_to image_tag(image.to_src), image_path(image.id)
