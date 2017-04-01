@@ -10,4 +10,14 @@
     %meta(name="apple-mobile-web-app-capable" content="yes")
     %meta(name="apple-mobile-web-app-status-bar-style" content="black-translucent")
   %body
-    %section= yield
+    %main
+      %header
+        %h1 Tremendous Pixels
+      %section= yield
+      %footer
+        = link_to image_tag('tremendous_icon.png'), 'https://twitter.com/tremendouspxs'
+        %p
+          an art project by
+          = link_to 'Jon Allured', 'http://jonallured.com'
+          |
+          = link_to 'source code', 'https://github.com/jonallured/tremendous_pixels/'
