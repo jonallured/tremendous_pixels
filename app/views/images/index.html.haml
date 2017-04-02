@@ -1,2 +1,4 @@
-- for image in images
-  = link_to image_tag(image.to_src), image_path(image.id)
+%ul
+  - for image in images
+    %li{class: cycle(%w(left middle right))}
+      = link_to image_tag(image.to_src), image_path(image.id)
