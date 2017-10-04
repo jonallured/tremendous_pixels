@@ -20,8 +20,9 @@ gem 'twitter'
 gem 'uglifier'
 
 group :development, :test do
-  gem 'pry-rails'
   gem 'dotenv-rails'
+  gem 'pry-rails'
+  gem 'rspec-rails'
 end
 
 group :development do
