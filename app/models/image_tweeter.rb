@@ -22,11 +22,11 @@ class ImageTweeter
   end
 
   def file
-    @file ||= do
+    @file ||= proc do
       path = File.join Rails.root, 'tmp', @image.to_src
       FileUtils.mkdir_p File.dirname path
       File.binwrite path, @image.data
       File.new path
-    end
+    end.call
   end
 end
