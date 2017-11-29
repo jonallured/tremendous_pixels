@@ -1,6 +1,6 @@
 class ImagesController < ApplicationController
   expose(:images) { Image.order(:created_at) }
-  expose(:image) { Image.find_by id: params[:id] }
+  expose :image
 
   def show
     respond_to do |format|
