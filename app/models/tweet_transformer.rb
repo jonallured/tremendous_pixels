@@ -15,14 +15,14 @@ class TweetTransformer
 
   def image_attrs
     {
-      data: @image_data,
-      palette: @image_palette,
-      text: @image_text
+      data: image_data,
+      palette: image_palette,
+      text: image_text.flatten.join
     }
   end
 
   def image_data
-    @image_data ||= TremendousPNG.as_blob(@image_text, @image_palette)
+    @image_data ||= TremendousPNG.as_blob(image_text, image_palette)
   end
 
   def image_palette
