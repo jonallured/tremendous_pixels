@@ -8,4 +8,12 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
+
+  config.before do
+    ActiveJob::Base.queue_adapter = :test
+  end
+
+  config.after do
+    ActiveJob::Base.queue_adapter.enqueued_jobs = []
+  end
 end
